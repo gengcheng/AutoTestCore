@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIAutomationLib", "UIAutomationLib\UIAutomationLib.csproj", "{B1E6356D-5AC1-47C9-B7F1-D797BA0CD46C}"
 EndProject
 Global
