@@ -479,6 +479,10 @@ namespace UIAutomationLib {
 
         }
 
+        public void DoMouseWheelUp() {
+            mouse_event(MouseEventFlag.Wheel, 0, 0, 0, UIntPtr.Zero);
+        }
+
         public string DoRightClickOnSysTray(string Process_Name, int processIndex) {
             try {
                 if (Marshal.SizeOf(typeof(IntPtr)) == 8) {
@@ -501,6 +505,8 @@ namespace UIAutomationLib {
                 return "Process not found";
             }
         }
+
+
         #endregion
 
     }

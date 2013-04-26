@@ -7,9 +7,9 @@ namespace UIAutomationLib {
    public class MenuOp {
        private MenuOp() { }
 
-       public static string MenuClick(string ClassName, string WindowName, string menuName) {
+       public static string MenuClick(string className, string WindowName, string menuName) {
            ControlOp co = new ControlOp(menuName, ControlType.MenuBar);
-           List<IntPtr> hWnd = co.GetChildWindow(ClassName, WindowName);
+           List<IntPtr> hWnd = co.GetChildWindow(className, WindowName);
            if (hWnd.Count != 0) {
                for (int i = hWnd.Count - 1; i >= 0; i--) {
                    AutomationElementCollection aec = co.FindByMultipleConditions(AutomationElement.FromHandle(hWnd[i]));
@@ -43,12 +43,16 @@ namespace UIAutomationLib {
        }
 
        public static string MenuItemClick(string WindowName, string menuName, string itemName) {
-           MenuClick(WindowName, menuName);
+           MenuClick(null, WindowName, menuName);
            return ContextOp.ItemClick(itemName);
        }
 
+       public static string MenuItemClick(string className, string WindowName, string menuName, string itemName) {
+           MenuClick(className, WindowName, menuName);
+           return ContextOp.ItemClick(itemName);
+       }
        public static string MenuItemClick(string WindowName, string menuName, string itemName, int time) {
-           MenuClick(WindowName, menuName);
+           MenuClick(null, WindowName, menuName);
            Utility.wait(time);
            return ContextOp.ItemClick(itemName);
        }

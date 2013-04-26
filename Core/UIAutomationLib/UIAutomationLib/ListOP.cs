@@ -8,15 +8,15 @@ namespace UIAutomationLib {
    public class ListOP {
         private ListOP() { }
 
-       private static AutomationElement getListElement(string ClassName, string WindowName, string lName){
-        ControlOp co = new ControlOp(lName, ControlType.List);
-            List<IntPtr> hWnd = co.GetChildWindow(ClassName, WindowName);
+       public static AutomationElement getListElement(string WindowName, string lID){
+        ControlOp co = new ControlOp(lID, ControlType.List);
+            List<IntPtr> hWnd = co.GetChildWindow(WindowName);
             if (hWnd.Count != 0) {
                 for (int i = hWnd.Count - 1; i >= 0; i--) {
                     AutomationElementCollection aec = co.FindByMultipleConditions(AutomationElement.FromHandle(hWnd[i]));
                     foreach (AutomationElement ae in aec) {
 
-                        if (ae.GetCurrentPropertyValue(AutomationElement.AutomationIdProperty).ToString().Contains(lName)) {
+                        if (ae.GetCurrentPropertyValue(AutomationElement.AutomationIdProperty).ToString().Contains(lID)) {
                            
                             return ae;
                         }
@@ -28,26 +28,33 @@ namespace UIAutomationLib {
             return null;
        }
 
-        private static int ItemCount(string ClassName, string WindowName, string lName) {
+        public static int ItemCount(string WindowName, string lID) {
 
-                            AutomationElement listItem = TreeWalker.ControlViewWalker.GetLastChild(getListElement(ClassName,WindowName,lName));
+                            AutomationElement listItem = TreeWalker.ControlViewWalker.GetLastChild(getListElement(WindowName,lID));
                             int[] counts = listItem.GetRuntimeId();
                             return counts[counts.Length - 1] + 1;
                      
         }
 
-        private static string SelectItemByCount(string ClassName, string WindowName, string lName, int count) {
+        public static string SelectItemByCount(string WindowName, string lID, int count) {
 
-            int maxCount = ItemCount(ClassName, WindowName, lName);
-            AutomationElement item1 = TreeWalker.ControlViewWalker.GetFirstChild(getListElement(ClassName, WindowName, lName));
+            int maxCount = ItemCount(WindowName, lID);
+            AutomationElement item1 = TreeWalker.ControlViewWalker.GetFirstChild(getListElement(WindowName, lID));
             if (count <= maxCount && count > 0) {
                 if (count == 1) {
 
                     SelectionItemPattern pattern;
                     pattern = item1.GetCurrentPattern(SelectionItemPattern.Pattern) as SelectionItemPattern;
                     pattern.Select();
-                    System.Windows.Point p = item1.GetClickablePoint();
-                    MouseClick.DoMouseClick(Convert.ToInt32(p.X), Convert.ToInt32(p.Y));
+                    try
+                    {
+                        System.Windows.Point p = item1.GetClickablePoint();
+                        MouseClick.DoMouseClick(Convert.ToInt32(p.X), Convert.ToInt32(p.Y));
+                    }
+                    catch (NoClickablePointException)
+                    {
+                        KeyboardOp.sendKey("{enter}");
+                    }
                     return "Done";
                 } else {
                     for (int index = 1; index < count; index++) {
@@ -56,8 +63,15 @@ namespace UIAutomationLib {
                     SelectionItemPattern pattern;
                     pattern = item1.GetCurrentPattern(SelectionItemPattern.Pattern) as SelectionItemPattern;
                     pattern.Select();
-                    System.Windows.Point p = item1.GetClickablePoint();
-                    MouseClick.DoMouseClick(Convert.ToInt32(p.X), Convert.ToInt32(p.Y));
+                    try
+                    {
+                        System.Windows.Point p = item1.GetClickablePoint();
+                        MouseClick.DoMouseClick(Convert.ToInt32(p.X), Convert.ToInt32(p.Y));
+                    }
+                    catch (NoClickablePointException)
+                    {
+                        KeyboardOp.sendKey("{enter}");
+                    }
                     return "Done";
                 }
             }
@@ -66,22 +80,12 @@ namespace UIAutomationLib {
                     
            
 
-        public static int ItemCount(string WindowName, string lName) {
-            return ItemCount(null, WindowName, lName);
+
+        public static bool Exsit(string WindowName, string lID) {
+            ControlOp co = new ControlOp(lID, ControlType.List);
+            return co.exist(co,WindowName);
         }
 
-        public static string SelectItemByCount(string WindowName, string lName, int count) {
-            return SelectItemByCount(null, WindowName, lName, count);
-        }
-
-        public static bool Exsit(string ClassName, string WindowName, string lName) {
-            ControlOp co = new ControlOp(lName, ControlType.List);
-            return co.exist(co, ClassName, WindowName);
-        }
-
-        public static bool Exsit(string WindowName, string lName) {
-            return Exsit(null, WindowName, lName);
-        }
 
     }
 }

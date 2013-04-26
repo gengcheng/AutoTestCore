@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+<AppPath>C:\Program Files\7-Zip\7zFM.exe</AppPath>
+<Associate>7z,arj,bz2,cab,deb,zip</Associate>
+<NonAssociate>iso,rar,tar</NonAssociate>
+</root>

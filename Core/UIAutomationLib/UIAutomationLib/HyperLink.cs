@@ -15,9 +15,9 @@ namespace UIAutomationLib {
             BrowserDriver = browser.getDriver;
         }
 
-        public static string LinkClick(string wClass, string wName, string lName) {
+        public static string LinkClick(string wName, string lName) {
             ControlOp co = new ControlOp(lName,ControlType.Text);
-            List<IntPtr> hWnd = co.GetChildWindow(wClass, wName);
+            List<IntPtr> hWnd = co.GetChildWindow(wName);
             if (hWnd.Count != 0) {
                 for (int i = hWnd.Count-1; i >=0;i--) {
                     AutomationElementCollection aec = co.FindByMultipleConditions(AutomationElement.FromHandle(hWnd[i]));
@@ -47,26 +47,39 @@ namespace UIAutomationLib {
 
         public static void LinkClick(BrowserOp browser, string linkName) {
             IWebDriver BrowserDriver = browser.getDriver;
+            
             IWebElement element;
             try {
                 element = BrowserDriver.FindElement(By.LinkText(linkName));
+               
             } catch (NoSuchElementException) {
-                element = BrowserDriver.FindElement(By.PartialLinkText(linkName));
+
+                    element = BrowserDriver.FindElement(By.PartialLinkText(linkName));
+               
             }
             element.Click();
         }
 
-        public static string LinkClick(string wName, string lName) {
-            return LinkClick(null, wName, lName);
+        public static void ExecuteJS(BrowserOp browser, string linkName, string JS) {
+            IWebDriver BrowserDriver = browser.getDriver;
+
+            IWebElement element;
+            try {
+                element = BrowserDriver.FindElement(By.LinkText(linkName));
+               
+            } catch (NoSuchElementException) {
+
+                element = BrowserDriver.FindElement(By.PartialLinkText(linkName));
+                
+                
+            }
+            ((IJavaScriptExecutor)BrowserDriver).ExecuteScript(JS, element);
         }
 
-        public static bool Exsit(string ClassName, string WindowName, string lName) {
-            ControlOp co = new ControlOp(lName, ControlType.Text);
-            return co.exist(co, ClassName, WindowName);
-        }
 
         public static bool Exsit(string WindowName, string lName) {
-            return Exsit(null, WindowName, lName);
+            ControlOp co = new ControlOp(lName, ControlType.Text);
+            return co.exist(co, WindowName);
         }
     }
     

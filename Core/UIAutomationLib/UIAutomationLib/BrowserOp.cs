@@ -10,43 +10,26 @@ using OpenQA.Selenium.Firefox;
 namespace UIAutomationLib {
     public enum BrowserType {
         IE,
-        Firefox
+        Firefox,
     }
 
-
-    [Serializable] 
     public class BrowserOp {
 
-
-
-
-       private IWebDriver driver;
-
-
-      
-        
+        private IWebDriver driver;
 
         public BrowserOp(string url, BrowserType type) {
             if (type == BrowserType.Firefox) {
-               FirefoxProfileManager ffm = new FirefoxProfileManager();
+                FirefoxProfileManager ffm = new FirefoxProfileManager();
                 FirefoxProfile ff = ffm.GetProfile("default");
-
-                    driver = new FirefoxDriver(ff);
-
-                
-            //    FirefoxDriver ff = new FirefoxDriver();
-
-          // driver = new InternetExplorerDriver();
-                
-            } else { driver = new InternetExplorerDriver(); }
-            if (!url.Contains("http")) {
-                url = "http://" + url;
+                driver = new FirefoxDriver(ff);
+            } else {
+                driver = new InternetExplorerDriver();
+                Maximize();
             }
-                driver.Url = url;
-            
-
-            
-           
+           // if (!url.Contains("http")) {
+            //    url = "http://" + url;
+         //   }
+               driver.Url = url;
         }
 
         public IWebDriver getDriver {
@@ -56,13 +39,23 @@ namespace UIAutomationLib {
             }
         }
 
+       
+
+
+
         public string getHandle {
             get {
                 return driver.GetWindowHandle();
             }
         }
 
-
+        public void Maximize() {
+            //Console.WriteLine(driver.Title);
+           // ButtonOp.buttonClick(driver.Title + " - Microsoft Internet Explorer provided by Hewlett-Packard", "Maximize");
+            ControlOp co = new ControlOp();
+            //co.MaximizeWindow(co.FindWindowHandle(null, driver.Title + " - Microsoft Internet Explorer provided by Hewlett-Packard"));
+            co.MaximizeWindow();
+        }
         public void Close() {
             driver.Close();
         }
@@ -82,14 +75,30 @@ namespace UIAutomationLib {
         public void Switch(string windowName) {
             ControlOp co = new ControlOp();
             ITargetLocator target = driver.SwitchTo();
-            target.Window(co.FindWindowHandle(null,windowName).ToString("X8"));
+            target.Window(co.FindWindowHandle(windowName).ToString("X8"));
+            
+        }
+
+        public void SwitchFrame(string frameName) {
+            
+            ITargetLocator target = driver.SwitchTo();
+            target.Frame(frameName);
+            
+        }
+
+        public void SwitchFrame(int frameIndex) {
+            ITargetLocator target = driver.SwitchTo();
+            target.Frame(frameIndex);
+
         }
 
        // public string BrowserText(string className, string windowName) {
         //    ControlOp co = new ControlOp();
        //     return co.FindForegroundWindowText(className, windowName);
       //  }
-
+        public bool AssertStringinSourceCode(string strAssert) {
+            return driver.PageSource.Contains(strAssert);
+        }
       
     }
 }

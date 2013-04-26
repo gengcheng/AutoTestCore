@@ -8,9 +8,9 @@ namespace UIAutomationLib {
 
         private PaneOP() { }
 
-        private static string PaneOutPut(string ClassName, string WindownName, string paneName, bool ispartPaneName) {
+        public static string PaneOutPut(string WindownName, string paneName, bool ispartPaneName) {
             ControlOp co = new ControlOp(paneName, ControlType.Pane);
-            List<IntPtr> hWnd = co.GetChildWindow(ClassName, WindownName);
+            List<IntPtr> hWnd = co.GetChildWindow(WindownName);
 
             if (hWnd.Count != 0) {
                 for (int i = hWnd.Count - 1; i >= 0; i--) {
@@ -37,26 +37,16 @@ namespace UIAutomationLib {
         }
 
 
-        public static string PaneOutPut(string WindowName, string paneName) {
-            return PaneOutPut(null, WindowName, paneName, true);
-        }
-
-        public static string PaneOutPut(string WindowName, string paneName, bool ispartPaneName) {
-            return PaneOutPut(null, WindowName, paneName, ispartPaneName);
-        }
-
-        public static bool Exsit(string ClassName, string WindowName, string paneName) {
-            ControlOp co = new ControlOp(paneName, ControlType.Pane);
-            return co.exist(co, ClassName, WindowName);
-        }
 
         public static bool Exsit(string WindowName, string paneName) {
-            return Exsit(null, WindowName, paneName);
+            ControlOp co = new ControlOp(paneName, ControlType.Pane);
+            return co.exist(co, WindowName);
         }
+
 
         public static string GetPaneName(string wName) {
             ControlOp co = new ControlOp(ControlType.Pane);
-            return co.getAllControlName(co, null, wName);
+            return co.getAllControlName(co,  wName);
         }
     }
 }

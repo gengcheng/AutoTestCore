@@ -8,11 +8,17 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
+using System.Net;
+using System.Runtime.InteropServices;
+using log4net;
+using OL = Microsoft.Office.Interop.Outlook;
+
 
 namespace UIAutomationLib {
    public class Utility {
        private Utility() { }
-
+       [DllImport("user32.dll")]
+       private static extern IntPtr FindWindow(string strClass, string strWindow);
        #region Disable Auto Hide Tray
        public static void DisableAutoHideTray() {
            RegistryKey pRegkey = Registry.CurrentUser;
@@ -145,7 +151,9 @@ namespace UIAutomationLib {
                                   Screen.PrimaryScreen.Bounds.Size,
                                   CopyPixelOperation.SourceCopy);
 
-           bmp.Save(file);
+           bmp.Save(file, System.Drawing.Imaging.ImageFormat.Jpeg);
+           bmp.Dispose();
+          
        }
        
        public static string CaptureScreen(string file, bool isCurrentWindow) {
@@ -156,8 +164,9 @@ namespace UIAutomationLib {
 
                    Image i = Clipboard.GetImage();
                    //if (data.GetDataPresent(typeof(Bitmap))) {
-                   i.Save(file);
+                   i.Save(file, System.Drawing.Imaging.ImageFormat.Jpeg);
                    Clipboard.Clear();
+                   i.Dispose();
                } catch (ThreadStateException) {
                    return "Please add [STAThread] mark";
                }
@@ -172,5 +181,69 @@ namespace UIAutomationLib {
 
        #endregion
 
+       public static bool windowExist(string windowName) {
+           IntPtr wHND = FindWindow(null, windowName);
+           if (wHND == IntPtr.Zero) {
+               return false;
+           } else
+               return true;
+       }
+
+       #region App launch
+       public static void AppLaunch(string App) {
+           Process.Start(App);
+       }
+       #endregion
+
+       #region send sms
+       public static string sendSMS(string senderPhoneNumber, string PWD, string receivePhoneNumber, string Message) {
+           string url = "http://fetion.coolpage.biz/fetion.php?phone=" + senderPhoneNumber + "&pwd=" + PWD + "&to=" + receivePhoneNumber + "&message=" + Message;
+           HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(url);
+           req.Method = "GET";
+           string result = String.Empty;
+           using (StreamReader reader = new StreamReader(req.GetResponse().GetResponseStream())) {
+               result = reader.ReadToEnd();
+           }
+           return result;
+
+       }
+       #endregion
+
+
+       public static void SendMeetingRequest(string subject, string Body, string Location, DateTime Start, DateTime End, string Recipient)
+       {
+           OL.Application oApp = new OL.Application();
+           //新建一个约会
+           OL.AppointmentItem oItem = (OL.AppointmentItem)oApp.CreateItem(OL.OlItemType.olAppointmentItem);
+           //约会为会议形式
+           oItem.MeetingStatus = OL.OlMeetingStatus.olMeeting;
+           oItem.Subject = subject;
+           oItem.Body = Body;
+           oItem.Location = Location;
+           //开始时间　
+           oItem.Start = Start;
+           //结束时间
+           oItem.End = End;
+           //提醒设置
+           oItem.ReminderSet = true;
+           //时间显示为忙
+           oItem.BusyStatus = OL.OlBusyStatus.olBusy;
+           //是否在线会议
+           oItem.IsOnlineMeeting = false;
+           //是否全天事件
+           oItem.AllDayEvent = false;
+           //邀请人员
+          // foreach (string s in Recipients)
+        //   {
+           oItem.Recipients.Add(Recipient);
+           
+        //   }
+           oItem.Recipients.ResolveAll();
+           //发送邀请
+         //  ((OL._MailItem)oItem).Send();
+           oItem.Send();
+           oItem = null;
+           oApp = null;
+       }
    }
 }

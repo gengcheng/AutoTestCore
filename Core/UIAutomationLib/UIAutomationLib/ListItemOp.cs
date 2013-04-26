@@ -7,9 +7,9 @@ namespace UIAutomationLib {
    public class ListItemOp {
        private ListItemOp() { }
 
-       public static string ListItemSelect(string wClass, string wName, string lName) {
+       public static string ListItemSelect(string wName, string lName) {
            ControlOp co = new ControlOp(lName, ControlType.ListItem);
-           List<IntPtr> hWnd = co.GetChildWindow(wClass, wName);
+           List<IntPtr> hWnd = co.GetChildWindow(wName);
            if (hWnd.Count != 0) {
                for (int i = hWnd.Count - 1; i >= 0; i--) {
                    AutomationElementCollection aec = co.FindByMultipleConditions(AutomationElement.FromHandle(hWnd[i]));
@@ -31,13 +31,10 @@ namespace UIAutomationLib {
            return "ListItem not found";
        }
 
-       public static string ListItemSelect(string wName, string lName) {
-           return ListItemSelect(null, wName, lName);
-       }
 
        public static bool Exsit(string ClassName, string WindowName, string lName) {
            ControlOp co = new ControlOp(lName, ControlType.ListItem);
-           return co.exist(co, ClassName, WindowName);
+           return co.exist(co, WindowName);
        }
 
        public static bool Exsit(string WindowName, string lName) {

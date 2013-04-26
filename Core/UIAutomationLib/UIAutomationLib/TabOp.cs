@@ -7,17 +7,21 @@ namespace UIAutomationLib {
    public class TabOp {
        private TabOp() { }
 
-       public static string TabSwitch(string wClass, string wName, string tName) {
+       public static string TabSwitch(string wName, string tName) {
            ControlOp co = new ControlOp(tName, ControlType.TabItem);
-           List<IntPtr> hWnd = co.GetChildWindow(wClass, wName);
+           List<IntPtr> hWnd = co.GetChildWindow(wName);
            if (hWnd.Count != 0) {
                for (int i = hWnd.Count - 1; i >= 0; i--) {
                    AutomationElementCollection aec = co.FindByMultipleConditions(AutomationElement.FromHandle(hWnd[i]));
                    foreach (AutomationElement ae in aec) {
-                       if (ae.GetCurrentPropertyValue(AutomationElement.NameProperty).ToString().Contains(tName)) {
-                           SelectionItemPattern pattern;
-                           pattern = ae.GetCurrentPattern(SelectionItemPattern.Pattern) as SelectionItemPattern;
-                           pattern.Select();
+                       Console.WriteLine(ae.GetCurrentPropertyValue(AutomationElement.NameProperty).ToString());
+                       if (ae.GetCurrentPropertyValue(AutomationElement.NameProperty).ToString() == tName){
+                          // SelectionItemPattern pattern;
+                         //  pattern = ae.GetCurrentPattern(SelectionItemPattern.Pattern) as SelectionItemPattern;
+                         //  pattern.Select();
+                        //   return "Done";
+                           Console.WriteLine("Find");
+                           MouseClick.DoMouseClick((int)(ae.Current.BoundingRectangle.X + ae.Current.BoundingRectangle.Width / 2), (int)(ae.Current.BoundingRectangle.Y + ae.Current.BoundingRectangle.Height / 2));
                            return "Done";
                        }
                    }
@@ -25,20 +29,46 @@ namespace UIAutomationLib {
            } else {
                return "TabPage not found";
            }
-           return "TabPage not found";
+           return "TabPage not found1";
        }
 
-       public static string TabSwitch(string wName, string tName) {
-           return TabSwitch(null, wName, tName);
-       }
-
-       public static bool Exsit(string ClassName, string WindowName, string tName) {
-           ControlOp co = new ControlOp(tName, ControlType.TabItem);
-           return co.exist(co, ClassName, WindowName);
-       }
 
        public static bool Exsit(string WindowName, string tName) {
-           return Exsit(null, WindowName, tName);
+           ControlOp co = new ControlOp(tName, ControlType.TabItem);
+           return co.exist(co, WindowName);
        }
+
+       public static string TabSwitch(string wName, string FlexTabName, string tName) {
+           ControlOp co = new ControlOp(FlexTabName, ControlType.Tab);
+           List<IntPtr> hWnd = co.GetChildWindow(wName);
+           if (hWnd.Count != 0) {
+               for (int i = hWnd.Count - 1; i >= 0; i--) {
+                   AutomationElementCollection aec = co.FindByMultipleConditions(AutomationElement.FromHandle(hWnd[i]));
+                   foreach (AutomationElement ae in aec) {
+                       if (ae.GetCurrentPropertyValue(AutomationElement.NameProperty).ToString() == FlexTabName ||
+                             ae.GetCurrentPropertyValue(AutomationElement.AutomationIdProperty).ToString() == FlexTabName) {
+                           Condition conditions = new AndCondition(
+                               new PropertyCondition(AutomationElement.IsEnabledProperty, true),
+                               new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.TabItem));
+                           AutomationElementCollection elementCollection = ae.FindAll(TreeScope.Children, conditions);
+                           foreach (AutomationElement auto in elementCollection) {
+                               if (auto.GetCurrentPropertyValue(AutomationElement.NameProperty).ToString() == tName) {
+                                   InvokePattern pattern;
+                                   pattern = auto.GetCurrentPattern(InvokePattern.Pattern) as InvokePattern;
+                                   pattern.Invoke();
+                                   return "Done";
+                               }
+                           }
+                       }
+                   }
+               }
+           } else {
+               return "TabPage not found";
+           }
+           return "Finish";
+       }
+
+   
+
     }
 }

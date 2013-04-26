@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestPortal>
+<UserName>Root</UserName>
+<PWD>111111</PWD>
+<manufacturer>Fun</manufacturer>
+<model>Air</model>
+<packageType>升级</packageType>
+<packageStatus>测试成功</packageStatus>
+</TestPortal>

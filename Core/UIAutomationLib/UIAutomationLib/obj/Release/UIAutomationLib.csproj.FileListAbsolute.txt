@@ -38,3 +38,85 @@ D:\Ivan Geng\Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\o
 D:\Ivan Geng\Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\Interop.TDAPIOLELib.dll
 D:\Ivan Geng\Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.csproj.ResolveComReference.cache
 D:\Ivan Geng\Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\Interop.TDAPIOLELib.dll
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.dll
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.pdb
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\Ionic.Zip.Reduced.dll
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\Newtonsoft.Json.Net20.dll
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Chrome.dll
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Common.dll
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Firefox.dll
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.IE.dll
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Remote.dll
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Chrome.pdb
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Chrome.xml
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Common.pdb
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Common.xml
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Firefox.pdb
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Firefox.xml
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.IE.pdb
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.IE.xml
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Remote.pdb
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Remote.xml
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\Interop.TDAPIOLELib.dll
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\ResolveAssemblyReference.cache
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\Interop.TDAPIOLELib.dll
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.csproj.ResolveComReference.cache
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.dll
+C:\Work\UI Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.pdb
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.dll
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.pdb
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\Interop.TDAPIOLELib.dll
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\obj\Release\ResolveAssemblyReference.cache
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\obj\Release\Interop.TDAPIOLELib.dll
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.csproj.ResolveComReference.cache
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.dll
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.pdb
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Common.dll
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Firefox.dll
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.IE.dll
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Remote.Common.dll
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Remote.dll
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriverBackedSelenium.dll
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\Ionic.Zip.Reduced.dll
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\Newtonsoft.Json.Net20.dll
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\ThoughtWorks.Selenium.Core.dll
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Common.pdb
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Common.xml
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Firefox.pdb
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Firefox.xml
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.IE.pdb
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.IE.xml
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Remote.pdb
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Remote.xml
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Remote.Common.pdb
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriver.Remote.Common.xml
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\WebDriverBackedSelenium.pdb
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\ThoughtWorks.Selenium.Core.pdb
+F:\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.dll
+F:\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.pdb
+F:\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\Interop.TDAPIOLELib.dll
+F:\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\obj\Release\ResolveAssemblyReference.cache
+F:\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\obj\Release\Interop.TDAPIOLELib.dll
+F:\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.csproj.ResolveComReference.cache
+F:\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.dll
+F:\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.pdb
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\Interop.Wlrun.dll
+C:\Work\UI Automation\UIAutomation\trunk\Core\UIAutomationLib\UIAutomationLib\bin\Release\log4net.dll
+C:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.dll
+C:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.pdb
+C:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\bin\Release\Interop.Wlrun.dll
+C:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\bin\Release\log4net.dll
+C:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\bin\Release\Interop.TDAPIOLELib.dll
+C:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\obj\Release\ResolveAssemblyReference.cache
+C:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\obj\Release\Interop.TDAPIOLELib.dll
+C:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.csproj.ResolveComReference.cache
+C:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.dll
+C:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.pdb
+D:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.dll
+D:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.pdb
+D:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\bin\Release\Interop.TDAPIOLELib.dll
+D:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\obj\Release\ResolveAssemblyReference.cache
+D:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\obj\Release\Interop.TDAPIOLELib.dll
+D:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.csproj.ResolveComReference.cache
+D:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.dll
+D:\Work\DM\DM\trunk\UI Automation Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.pdb

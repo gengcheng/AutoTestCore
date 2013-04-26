@@ -1,0 +1,11 @@
+public static string sendSMS(string senderPhoneNumber, string PWD, string receivePhoneNumber, string Message) {
+           string url = "http://fetion.coolpage.biz/fetion.php?phone=" + senderPhoneNumber + "&pwd=" + PWD + "&to=" + receivePhoneNumber + "&message=" + Message;
+           HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(url);
+           req.Method = "GET";
+           string result = String.Empty;
+           using (StreamReader reader = new StreamReader(req.GetResponse().GetResponseStream())) {
+               result = reader.ReadToEnd();
+           }
+           return result;
+
+       }

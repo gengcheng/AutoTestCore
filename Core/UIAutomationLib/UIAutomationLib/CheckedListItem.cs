@@ -10,9 +10,9 @@ namespace UIAutomationLib {
 
         #region Handle Menu Items
 
-        private static string CheckboxToggleOnOff(string wClass, string wName, string cName, ToggleState ts, bool isPartContainCheckedListItemName) {
+        private static string CheckboxToggleOnOff(string wName, string cName, ToggleState ts, bool isPartContainCheckedListItemName) {
             ControlOp co = new ControlOp(cName, ControlType.ListItem);
-            List<IntPtr> hWnd = co.GetChildWindow(wClass, wName);
+            List<IntPtr> hWnd = co.GetChildWindow(wName);
             if (hWnd.Count != 0) {
                 for (int i = hWnd.Count - 1; i >= 0;i-- ) {
                     AutomationElementCollection aec = co.FindByMultipleConditions(AutomationElement.FromHandle(hWnd[i]));
@@ -46,69 +46,44 @@ namespace UIAutomationLib {
             return "ListItem not found";
         }
         
-        public static string CheckboxToggleOn(string wClass, string wName, string cName) {
-           return CheckboxToggleOnOff(wClass, wName, cName, ToggleState.On, true);
-        }
-
         public static string CheckboxToggleOn(string wName, string cName) {
-            return CheckboxToggleOnOff(null, wName, cName, ToggleState.On, true);
+           return CheckboxToggleOnOff(wName, cName, ToggleState.On, true);
         }
 
-        public static string CheckboxToggleOff(string wClass, string wName, string cName) {
-            return CheckboxToggleOnOff(wClass, wName, cName, ToggleState.Off,true);
-        }
 
         public static string CheckboxToggleOff(string wName, string cName) {
-            return CheckboxToggleOnOff(null, wName, cName, ToggleState.Off,true);
-        }
-
-        public static void CheckboxToggleOn(string wClass, string wName, int seconds, params string[] cNames) {
-            foreach (string cName in cNames) {
-                CheckboxToggleOnOff(wClass, wName, cName, ToggleState.On, false);
-                Utility.wait(seconds);
-            }
+            return CheckboxToggleOnOff(wName, cName, ToggleState.Off,true);
         }
 
         public static void CheckboxToggleOn(string wName, int seconds, params string[] cNames) {
             foreach (string cName in cNames) {
-                CheckboxToggleOnOff(null, wName, cName, ToggleState.On, false);
+                CheckboxToggleOnOff(wName, cName, ToggleState.On, false);
                 Utility.wait(seconds);
             }
         }
 
-        public static void CheckboxToggleOff(string wClass, string wName, int seconds, params string[] cNames) {
-            foreach (string cName in cNames) {
-                CheckboxToggleOnOff(wClass, wName, cName, ToggleState.Off, false);
-                Utility.wait(seconds);
-            }
-        }
 
         public static void CheckboxToggleOff(string wName, int seconds, params string[] cNames) {
             foreach (string cName in cNames) {
-                CheckboxToggleOnOff(null, wName, cName, ToggleState.Off, false);
+                CheckboxToggleOnOff(wName, cName, ToggleState.Off, false);
                 Utility.wait(seconds);
             }
         }
 
-        public static string CheckboxToggleOn(string wClass, string wName, string cName, bool isPartContainCheckedListItemName) {
-            return CheckboxToggleOnOff(wClass, wName, cName, ToggleState.On, isPartContainCheckedListItemName);
-        }
 
         public static string CheckboxToggleOn(string wName, string cName, bool isPartContainCheckedListItemName) {
-            return CheckboxToggleOnOff(null, wName, cName, ToggleState.On, isPartContainCheckedListItemName);
+            return CheckboxToggleOnOff(wName, cName, ToggleState.On, isPartContainCheckedListItemName);
         }
 
-        public static string CheckboxToggleOff(string wClass, string wName, string cName, bool isPartContainCheckedListItemName) {
-            return CheckboxToggleOnOff(wClass, wName, cName, ToggleState.Off, isPartContainCheckedListItemName);
-        }
 
         public static string CheckboxToggleOff(string wName, string cName, bool isPartContainCheckedListItemName) {
-            return CheckboxToggleOnOff(null, wName, cName, ToggleState.Off, isPartContainCheckedListItemName);
+            return CheckboxToggleOnOff(wName, cName, ToggleState.Off, isPartContainCheckedListItemName);
         }
 
-        public static string CheckBoxToggle(string wClass, string wName, string cName, bool isPartContainCheckedListItemName) {
+
+        public static string CheckBoxToggle(string wName, string cName, bool isPartContainCheckedListItemName) {
             ControlOp co = new ControlOp(cName, ControlType.ListItem);
-            List<IntPtr> hWnd = co.GetChildWindow(wClass, wName);
+            List<IntPtr> hWnd = co.GetChildWindow(wName);
             if (hWnd.Count != 0) {
                 for (int i = hWnd.Count - 1; i >= 0; i--) {
                     AutomationElementCollection aec = co.FindByMultipleConditions(AutomationElement.FromHandle(hWnd[i]));
@@ -139,25 +114,19 @@ namespace UIAutomationLib {
         }
 
         public static string CheckBoxToggle(string wName, string cName) {
-            return CheckBoxToggle(null, wName, cName, true);
+            return CheckBoxToggle(wName, cName, true);
         }
 
-        public static string CheckBoxToggle(string wName, string cName, bool isPartContainCheckedListItemName) {
-            return CheckBoxToggle(null, wName, cName, isPartContainCheckedListItemName);
-        }
-
-        public static bool Exsit(string ClassName, string WindowName, string cName) {
-            ControlOp co = new ControlOp(cName, ControlType.ListItem);
-            return co.exist(co, ClassName, WindowName);
-        }
 
         public static bool Exsit(string WindowName, string cName) {
-            return Exsit(null, WindowName, cName);
+            ControlOp co = new ControlOp(cName, ControlType.ListItem);
+            return co.exist(co, WindowName);
         }
+
 
         public static string GetCheckedListboxName(string WindowName) {
             ControlOp co = new ControlOp(ControlType.ListItem);
-            return co.getAllControlName(co, null, WindowName);
+            return co.getAllControlName(co, WindowName);
         }
 
     }

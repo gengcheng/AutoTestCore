@@ -14,42 +14,63 @@ namespace UIAutomationLib {
             BrowserDriver = browser.getDriver;
         }
 
-        public static string ComboBoxItemSelect(string ClassName, string WindownName, string comboName, string ItemName) {
+        private static string ComboBoxItemSelect(string WindowName, string comboName, string ItemName, int itemCount) {
             ControlOp co = new ControlOp(comboName, ControlType.ComboBox);
-            List<IntPtr> hWnd = co.GetChildWindow(ClassName, WindownName);
+            List<IntPtr> hWnd = co.GetChildWindow(WindowName);
             if (hWnd.Count != 0) {
                 for (int i = hWnd.Count - 1; i >= 0; i--) {
                     AutomationElementCollection aec = co.FindByMultipleConditions(AutomationElement.FromHandle(hWnd[i]));
                     foreach (AutomationElement ae in aec) {
                         if (ae.GetCurrentPropertyValue(AutomationElement.NameProperty).ToString().Contains(comboName) ||
                             ae.GetCurrentPropertyValue(AutomationElement.AutomationIdProperty).ToString() == comboName) {
-                            ExpandCollapsePattern pattern;
-                            pattern = ae.GetCurrentPattern(ExpandCollapsePattern.Pattern) as ExpandCollapsePattern;
-                            pattern.Expand();
 
-                            Condition conditions = new AndCondition(
-                                new PropertyCondition(AutomationElement.IsEnabledProperty, true),
-                                new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.List));
+                                try {
+                                    ExpandCollapsePattern pattern;
+                                    pattern = ae.GetCurrentPattern(ExpandCollapsePattern.Pattern) as ExpandCollapsePattern;
+                                    pattern.Expand();
 
-                            // Find all children that match the specified conditions..
-                            AutomationElementCollection elementCollection = ae.FindAll(TreeScope.Children, conditions);
+                                    Condition conditions = new AndCondition(
+                                        new PropertyCondition(AutomationElement.IsEnabledProperty, true),
+                                        new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.List));
+                                    AutomationElementCollection elementCollection = ae.FindAll(TreeScope.Children, conditions);
 
-                            foreach (AutomationElement e in elementCollection) {
-                                Condition conditionsItem = new AndCondition(
-                             new PropertyCondition(AutomationElement.IsEnabledProperty, true),
-                             new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.ListItem));
+                                    // Find all children that match the specified conditions..
 
-                                AutomationElementCollection elementCollectionItem = e.FindAll(TreeScope.Children, conditionsItem);
-                                foreach (AutomationElement auto in elementCollectionItem) {
-                                    if (auto.GetCurrentPropertyValue(AutomationElement.NameProperty).ToString().Contains(ItemName)) {
-                                        
-                                        System.Windows.Point p = auto.GetClickablePoint();
-                                        MouseClick.DoMouseClick(Convert.ToInt32(p.X), Convert.ToInt32(p.Y));
+                                    if (itemCount == 0) {
+                                        foreach (AutomationElement e in elementCollection) {
+                                            Condition conditionsItem = new AndCondition(
+                                         new PropertyCondition(AutomationElement.IsEnabledProperty, true),
+                                         new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.ListItem));
+
+                                            AutomationElementCollection elementCollectionItem = e.FindAll(TreeScope.Children, conditionsItem);
+                                            foreach (AutomationElement auto in elementCollectionItem) {
+                                                if (auto.GetCurrentPropertyValue(AutomationElement.NameProperty).ToString().Contains(ItemName)) {
+
+                                                    System.Windows.Point p = auto.GetClickablePoint();
+                                                    MouseClick.DoMouseClick(Convert.ToInt32(p.X), Convert.ToInt32(p.Y));
+                                                    return "Done";
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        string lID = elementCollection[0].GetCurrentPropertyValue(AutomationElement.AutomationIdProperty).ToString();
+                                        ListOP.SelectItemByCount(WindowName, lID, itemCount);
                                         return "Done";
                                     }
+                                } catch (InvalidOperationException) { //Flex testing
+                                    Condition conditions = new AndCondition(
+                               new PropertyCondition(AutomationElement.IsEnabledProperty, true),
+                               new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.ListItem));
+                                    AutomationElementCollection elementCollection = ae.FindAll(TreeScope.Children, conditions);
+                                    foreach (AutomationElement auto in elementCollection) {
+                                        if (auto.GetCurrentPropertyValue(AutomationElement.NameProperty).ToString().Contains(ItemName)) {
+                                            InvokePattern pattern;
+                                            pattern = auto.GetCurrentPattern(InvokePattern.Pattern) as InvokePattern;
+                                            pattern.Invoke();
+                                            return "Done";
+                                        }
+                                    }
                                 }
-                            }
-                            
                         }
                     }
                         
@@ -85,21 +106,24 @@ namespace UIAutomationLib {
         }
             
         public static string ComboBoxItemSelect(string WindowName, string comboName, string ItemName) {
-            return ComboBoxItemSelect(null, WindowName, comboName, ItemName);
+            return ComboBoxItemSelect(WindowName, comboName, ItemName, 0);
         }
 
-        public static bool Exsit(string ClassName, string WindowName, string comboName) {
+        public static string ComboBoxItemSelectByCount(string WindowName, string comboName, int ItemCount)
+        {
+            return ComboBoxItemSelect(WindowName, comboName, "", ItemCount);
+        }
+
+        public static bool Exsit( string WindowName, string comboName) {
             ControlOp co = new ControlOp(comboName, ControlType.ComboBox);
-            return co.exist(co, ClassName, WindowName);
+            return co.exist(co, WindowName);
         }
 
-        public static bool Exsit(string WindowName, string comboName) {
-            return Exsit(null, WindowName, comboName);
-        }
 
         public static string GetComboBoxName(string WindowName) {
             ControlOp co = new ControlOp(ControlType.ComboBox);
-            return co.getAllControlName(co, null, WindowName);
+            return co.getAllControlName(co, WindowName);
         }
+
     }
 }

@@ -14,21 +14,21 @@ namespace UIAutomationLib {
             BrowserDriver = browser.getDriver;
         }
 
-        private static string CheckBoxOnOff(string wClass, string wName, string cName, ToggleState ts, bool isPartContainCheckboxName) {
+        private static string CheckBoxOnOff(string wName, string cName, ToggleState ts, bool isPartContainCheckboxName) {
             ControlOp co = new ControlOp(cName,ControlType.CheckBox);
-            List<IntPtr> hWnd = co.GetChildWindow(wClass, wName);
+            List<IntPtr> hWnd = co.GetChildWindow(wName);
             if (hWnd.Count != 0) {
                 for (int i = hWnd.Count-1; i >= 0; i--) {
                     AutomationElementCollection aec = co.FindByMultipleConditions(AutomationElement.FromHandle(hWnd[i]));
                     foreach (AutomationElement ae in aec) {
                         ControlAction(ae, isPartContainCheckboxName, ts, cName);
-                        return "Done";
+                        //return "Done";
                     }
                 }
             } else {
                 return "Checkbox not found, hwnd";
             }
-            return "Checkbox not found";
+            return "Checkbox Finish";
         
         }
 
@@ -94,83 +94,52 @@ namespace UIAutomationLib {
         }
 
 
-        public static string CheckBoxOn(string wClass, string wName, string cName) {
-            return CheckBoxOnOff(wClass, wName, cName, ToggleState.On, true);
-        }
-
-        public static string CheckBoxOff(string wClass, string wName, string cName) {
-            return CheckBoxOnOff(wClass, wName, cName, ToggleState.Off, true);
-        }
-
         public static string CheckBoxOn(string wName, string cName) {
-            return CheckBoxOnOff(null, wName, cName, ToggleState.On,true);
+            return CheckBoxOnOff(wName, cName, ToggleState.On, false);
         }
 
         public static string CheckBoxOff(string wName, string cName) {
-            return CheckBoxOnOff(null, wName, cName, ToggleState.Off,true);
+            return CheckBoxOnOff(wName, cName, ToggleState.Off, false);
         }
 
-        public static void CheckBoxOn(string wClass, string wName, int seconds, params string[] cNames) {
-            foreach (string cName in cNames) {
-                CheckBoxOnOff(wClass, wName, cName, ToggleState.On, false);
-                Utility.wait(seconds);
-            }
-        }
-
-        public static void CheckBoxOff(string wClass, string wName, int seconds, params string[] cNames) {
-            foreach (string cName in cNames) {
-                CheckBoxOnOff(wClass, wName, cName, ToggleState.Off, false);
-                Utility.wait(seconds);
-            }
-        }
 
         public static void CheckBoxOn(string wName, int seconds, params string[] cNames) {
             foreach (string cName in cNames) {
-                CheckBoxOnOff(null, wName, cName, ToggleState.On, false);
+                CheckBoxOnOff(wName, cName, ToggleState.On, false);
                 Utility.wait(seconds);
             }
         }
 
         public static void CheckBoxOff(string wName, int seconds, params string[] cNames) {
             foreach (string cName in cNames) {
-                CheckBoxOnOff(null, wName, cName, ToggleState.Off, false);
+                CheckBoxOnOff(wName, cName, ToggleState.Off, false);
                 Utility.wait(seconds);
             }
         }
 
-        public static string CheckBoxOn(string wClass, string wName, string cName, bool isPartContainCheckboxName) {
-            return CheckBoxOnOff(wClass, wName, cName, ToggleState.On, isPartContainCheckboxName);
-        }
 
-        public static string CheckBoxOff(string wClass, string wName, string cName, bool isPartContainCheckboxName) {
-            return CheckBoxOnOff(wClass, wName, cName, ToggleState.Off, isPartContainCheckboxName);
-        }
+
+
 
         public static string CheckBoxOn(string wName, string cName, bool isPartContainCheckboxName) {
-            return CheckBoxOnOff(null, wName, cName, ToggleState.On, isPartContainCheckboxName);
+            return CheckBoxOnOff(wName, cName, ToggleState.On, isPartContainCheckboxName);
         }
 
         public static string CheckBoxOff(string wName, string cName, bool isPartContainCheckboxName) {
-            return CheckBoxOnOff(null, wName, cName, ToggleState.Off, isPartContainCheckboxName);
+            return CheckBoxOnOff(wName, cName, ToggleState.Off, isPartContainCheckboxName);
         }
 
-        public static bool Exsit(string ClassName, string WindowName, string cName) {
-            ControlOp co = new ControlOp(cName, ControlType.CheckBox);
-            return co.exist(co, ClassName, WindowName);
-        }
+
 
         public static bool Exsit(string WindowName, string cName) {
-            return Exsit(null, WindowName, cName);
+            ControlOp co = new ControlOp(cName, ControlType.CheckBox);
+            return co.exist(co, WindowName);
         }
+
 
         public static string GetCheckboxName(string WindowName) {
             ControlOp co = new ControlOp(ControlType.CheckBox);
-            return co.getAllControlName(co, null, WindowName);
-        }
-
-        public static string GetCheckboxName(string className, string WindowName) {
-            ControlOp co = new ControlOp(ControlType.CheckBox);
-            return co.getAllControlName(co, className, WindowName);
+            return co.getAllControlName(co, WindowName);
         }
     }
 }

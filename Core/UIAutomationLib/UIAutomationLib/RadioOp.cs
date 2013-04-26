@@ -13,17 +13,23 @@ namespace UIAutomationLib {
                    BrowserDriver = browser.getDriver;
                }
 
-       public static string RadioSelect(string cName, string wName, string rName) {
+       public static string RadioSelect(string wName, string rName) {
            ControlOp co = new ControlOp(rName, ControlType.RadioButton);
-           List<IntPtr> hWnd = co.GetChildWindow(null, wName);
+           List<IntPtr> hWnd = co.GetChildWindow(wName);
            if (hWnd.Count != 0) {
                for (int i = hWnd.Count - 1; i >= 0; i--) {
                    AutomationElementCollection aec = co.FindByMultipleConditions(AutomationElement.FromHandle(hWnd[i]));
                    foreach (AutomationElement ae in aec) {
                        if (ae.GetCurrentPropertyValue(AutomationElement.NameProperty).ToString().Contains(rName)) {
-                           SelectionItemPattern pattern;
-                           pattern = ae.GetCurrentPattern(SelectionItemPattern.Pattern) as SelectionItemPattern;
-                           pattern.Select();
+                           try {
+                               SelectionItemPattern pattern;
+                               pattern = ae.GetCurrentPattern(SelectionItemPattern.Pattern) as SelectionItemPattern;
+                               pattern.Select();
+                           } catch {
+                               InvokePattern pattern;
+                               pattern = ae.GetCurrentPattern(InvokePattern.Pattern) as InvokePattern;
+                               pattern.Invoke();
+                           }
                            return "Done";
                        }
                    }
@@ -34,19 +40,6 @@ namespace UIAutomationLib {
            return "Radio Button not found";
        }
 
-
-       public void RadioSelect(string rName, string rValue) {
-
-           IWebElement radio;
-           try {
-               radio = BrowserDriver.FindElement(By.XPath("//input[@type='radio' and @name='" + rName + "' and @value='" + rValue + "']"));
-           } catch (NoSuchElementException) {
-               radio = BrowserDriver.FindElement(By.Id(rValue));
-           }
-
-           radio.Click();
-
-       }
 
        public static void RadioSelect(BrowserOp browser, string rName, string rValue) {
            IWebDriver BrowserDriver = browser.getDriver;
@@ -62,18 +55,15 @@ namespace UIAutomationLib {
        }
 
 
-       public static bool Exsit(string ClassName, string WindowName, string rName) {
+       public static bool Exsit(string WindowName, string rName) {
            ControlOp co = new ControlOp(rName, ControlType.RadioButton);
-           return co.exist(co, ClassName, WindowName);
+           return co.exist(co, WindowName);
        }
 
-       public static bool Exsit(string WindowName, string rName) {
-           return Exsit(null, WindowName, rName);
-       }
 
        public static string GetRadioName(string WindowName) {
            ControlOp co = new ControlOp(ControlType.RadioButton);
-           return co.getAllControlName(co, null, WindowName);
+           return co.getAllControlName(co, WindowName);
        }
     }
 }

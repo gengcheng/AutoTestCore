@@ -18,8 +18,6 @@ namespace UIAutomationLib {
            
        }
 
-       
-
        public string GetNodeValue(string nodeName) {
            string[] nodes = nodeName.Split('\\');
            XmlNode xn = xmldoc.SelectSingleNode("//" + nodes[0] + "//" + nodes[1]);

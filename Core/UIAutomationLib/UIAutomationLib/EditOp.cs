@@ -13,8 +13,10 @@ namespace UIAutomationLib {
         public EditOp(BrowserOp browser) {
             BrowserDriver = browser.getDriver;
         }
+
         
-        private static string EditInOut(AutomationElement ae, bool isOut, string key) {
+        
+        private static string EditInOut(AutomationElement ae, bool isOut, string key, string windowName) {
             if (isOut) {
                 ValuePattern pattern;
                 pattern = ae.GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
@@ -23,22 +25,26 @@ namespace UIAutomationLib {
             } else {
                 ValuePattern pattern;
                 pattern = ae.GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
-                pattern.SetValue("");
-                System.Windows.Point p = ae.GetClickablePoint();
-                
-                MouseClick.DoMouseClick(Convert.ToInt32(p.X), Convert.ToInt32(p.Y));
-                Utility.wait(1);
-                KeyboardOp.sendKey(key);
-                key = "Done";
+                Utility.wait(2);
+                try {
+                    pattern.SetValue(key);
+                } catch(InvalidOperationException) {
+                    ControlOp co = new ControlOp();
+                    co.SetForeground(windowName);
+                    Utility.wait(2);
+                    KeyboardOp.sendKey(key);
+                    Utility.wait(2);
+                    return "key sent";
+                }
+                return "No key sent";
             }
-            return key;
 
         }
 
 
-        private static string EditInOutPut(string ClassName, string WindownName, string editName, string key, bool ispartEditName, bool isout) {
+        private static string EditInOutPut(string WindownName, string editName, string key, bool ispartEditName, bool isout) {
             ControlOp co = new ControlOp(editName, ControlType.Edit);
-            List<IntPtr> hWnd = co.GetChildWindow(ClassName, WindownName);
+            List<IntPtr> hWnd = co.GetChildWindow(WindownName);
             string result = "";
             if (hWnd.Count != 0) {
                 for (int i = hWnd.Count - 1; i >= 0; i--) {
@@ -49,10 +55,10 @@ namespace UIAutomationLib {
                             if (ae.GetCurrentPropertyValue(AutomationElement.NameProperty).ToString().Contains(editName) ||
                                 ae.GetCurrentPropertyValue(AutomationElement.AutomationIdProperty).ToString() == editName) {
                                 if (isout) {
-                                    result = EditInOut(ae, true, key);
+                                    result = EditInOut(ae, true, key, WindownName);
                                     return result;
                                 } else {
-                                    result = EditInOut(ae, false, key);
+                                    result = EditInOut(ae, false, key, WindownName);
                                     return result;
                                 }
                             }
@@ -60,10 +66,10 @@ namespace UIAutomationLib {
                             if (ae.GetCurrentPropertyValue(AutomationElement.NameProperty).ToString() == editName ||
                                 ae.GetCurrentPropertyValue(AutomationElement.AutomationIdProperty).ToString() == editName) {
                                 if (isout) {
-                                    result = EditInOut(ae, true, key);
+                                    result = EditInOut(ae, true, key, WindownName);
                                     return result;
                                 } else {
-                                    result = EditInOut(ae, false, key);
+                                    result = EditInOut(ae, false, key, WindownName);
                                     return result;
                                 }
                             }
@@ -132,25 +138,22 @@ namespace UIAutomationLib {
         }
        
         public static string EditInput(string WindowName, string editName, string key) {
-            return EditInOutPut(null, WindowName, editName, key, true, false);
+            return EditInOutPut(WindowName, editName, key, true, false);
         }
 
         public static string EditOutput(string WindowName, string editName) {
-            return EditInOutPut(null, WindowName, editName,"",true,true);
-        }
-
-        public static bool Exsit(string ClassName, string WindowName, string editName) {
-            ControlOp co = new ControlOp(editName, ControlType.Edit);
-            return co.exist(co, ClassName, WindowName);
+            return EditInOutPut(WindowName, editName,"",true,true);
         }
 
         public static bool Exsit(string WindowName, string editName) {
-            return Exsit(null, WindowName, editName);
+            ControlOp co = new ControlOp(editName, ControlType.Edit);
+            return co.exist(co,  WindowName);
         }
+
 
         public static string GetEditName(string wName) {
             ControlOp co = new ControlOp(ControlType.Edit);
-            return co.getAllControlName(co, null, wName);
+            return co.getAllControlName(co, wName);
         }
     }
 }

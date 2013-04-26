@@ -7,11 +7,13 @@ using System.Runtime.InteropServices;
 namespace UIAutomationLib {
 
     public delegate bool CallBack(int hwnd, int y); 
-   internal class ControlOp {
+    //Core Class, all controller classes will invoke this class
+   public class ControlOp {
        //Check all return code!!!!!
        private ControlType _ct;
        private string _ControlName = "";
        private List<string> windowTexts = new List<string>();
+       private const int SW_SHOWMAXIMIZED = 3;
        public ControlOp(string cName, ControlType CT) {
            _ControlName = cName;
            _ct = CT;
@@ -59,10 +61,15 @@ namespace UIAutomationLib {
 
        [DllImport("user32.dll")]
 
-       public static extern int EnumWindows(CallBack x, int y);  
+       public static extern int EnumWindows(CallBack x, int y);
+
+       [DllImport("user32.dll")]
+       private static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
 
 
-
+       public void MaximizeWindow() {
+           ShowWindowAsync(GetForegroundWindow(), SW_SHOWMAXIMIZED);
+       }
 
 
        public AutomationElementCollection FindByMultipleConditions(AutomationElement elementWindowElement) {
@@ -73,11 +80,17 @@ namespace UIAutomationLib {
            Condition conditions = new AndCondition(
 
                    new PropertyCondition(AutomationElement.IsControlElementProperty, true),
-                   new PropertyCondition(AutomationElement.ControlTypeProperty, _ct));
-          
+                   new PropertyCondition(AutomationElement.ControlTypeProperty, _ct)
+                //     new PropertyCondition(AutomationElement.IsControlElementProperty, true));
+                   );
 
+           //Condition condition = new PropertyCondition(AutomationElement.IsControlElementProperty, true);
            // Find all children that match the specified conditions..
-           AutomationElementCollection elementCollection = elementWindowElement.FindAll(TreeScope.Children, conditions);
+           AutomationElementCollection elementCollection;
+           //TreeWalker tw = new TreeWalker(conditions);
+
+           elementCollection = elementWindowElement.FindAll(TreeScope.Children, conditions);
+         
            return elementCollection;
        }
 
@@ -87,8 +100,12 @@ namespace UIAutomationLib {
        /// </summary>
        /// <param name="parent">Parent of the windows to return</param>
        /// <returns>List of child windows</returns>
+       public List<IntPtr> GetChildWindow(string windowName) {
+           return GetChildWindow(null, windowName);
+       }
+
        public List<IntPtr> GetChildWindow(string className, string windowName) {
-           string wName = FindForegroundWindowText(className,windowName);
+           string wName = FindForegroundWindowText(windowName);
            List<IntPtr> result = new List<IntPtr>();
            if (wName.Contains(windowName)) {
 
@@ -106,8 +123,13 @@ namespace UIAutomationLib {
            }
            return result;
        }
-
        
+       internal IntPtr FindWindowHandle(string windowName) {
+
+           return FindWindowHandle(null, windowName);
+
+       }
+
        internal IntPtr FindWindowHandle(string className, string windowName) {
 
            EnumWindows(Report, 0);
@@ -123,8 +145,12 @@ namespace UIAutomationLib {
 
        }
 
+       public void SetForeground(string windowName){
+           SetForegroundWindow(FindWindowHandle(windowName));
+       }
+
        //input part window name and then set it as foreground window
-       internal string FindForegroundWindowText(string className, string windowName) {
+       public string FindForegroundWindowText(string windowName) {
           
            EnumWindows(Report, 0);
            string fullWindowName = "";
@@ -135,7 +161,7 @@ namespace UIAutomationLib {
                }
 
            }
-           IntPtr Hwnd = FindWindow(className, fullWindowName);
+           IntPtr Hwnd = FindWindow(null, fullWindowName);
             SetForegroundWindow(Hwnd);
             Utility.wait(1);
            StringBuilder name = new StringBuilder(256);
@@ -144,8 +170,8 @@ namespace UIAutomationLib {
        }
 
 
-       public bool exist(ControlOp co, string ClassName, string WindowName) {
-           List<IntPtr> hWnd = co.GetChildWindow(ClassName, WindowName);
+       public bool exist(ControlOp co, string WindowName) {
+           List<IntPtr> hWnd = co.GetChildWindow(WindowName);
            if (hWnd.Count != 0) {
                for (int i = hWnd.Count - 1; i >= 0; i--) {
                    if (hWnd[i] != IntPtr.Zero) {
@@ -170,10 +196,10 @@ namespace UIAutomationLib {
        
        }
 
-       public bool exist(ControlOp co, string ClassName, string WindowName, int seconds) {
+       public bool exist(ControlOp co, string WindowName, int seconds) {
            int interval = seconds/2;
            while (interval != 0) {
-               List<IntPtr> hWnd = co.GetChildWindow(ClassName, WindowName);
+               List<IntPtr> hWnd = co.GetChildWindow(WindowName);
                if (hWnd.Count != 0) {
                    for (int i = hWnd.Count - 1; i >= 0; i--) {
                        if (hWnd[i] != IntPtr.Zero) {
@@ -199,9 +225,9 @@ namespace UIAutomationLib {
            return false;
 
        }
-
-       public string getAllControlName(ControlOp co, string ClassName, string WindowName) {
-           List<IntPtr> hWnd = co.GetChildWindow(ClassName, WindowName);
+       
+       public string getAllControlName(ControlOp co, string WindowName) {
+           List<IntPtr> hWnd = co.GetChildWindow(WindowName);
            if (hWnd.Count != 0) {
                string controlName = "";
                for (int i = hWnd.Count - 1; i >= 0; i--) {
