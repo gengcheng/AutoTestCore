@@ -1,0 +1,8 @@
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core_Test\ControlSpy\ControlSpy\bin\Debug\ControlSpy.exe.config
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core_Test\ControlSpy\ControlSpy\bin\Debug\ControlSpy.exe
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core_Test\ControlSpy\ControlSpy\bin\Debug\ControlSpy.pdb
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core_Test\ControlSpy\ControlSpy\bin\Debug\UIAutomationLib.dll
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core_Test\ControlSpy\ControlSpy\bin\Debug\UIAutomationLib.pdb
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core_Test\ControlSpy\ControlSpy\obj\Debug\ResolveAssemblyReference.cache
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core_Test\ControlSpy\ControlSpy\obj\Debug\ControlSpy.exe
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core_Test\ControlSpy\ControlSpy\obj\Debug\ControlSpy.pdb

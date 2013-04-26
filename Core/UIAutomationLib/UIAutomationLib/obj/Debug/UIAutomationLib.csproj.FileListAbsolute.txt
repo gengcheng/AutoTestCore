@@ -1,0 +1,15 @@
+D:\Document\Visual Studio 2008\Projects\UIAutomationLib\UIAutomationLib\obj\Debug\ResolveAssemblyReference.cache
+D:\Document\Visual Studio 2008\Projects\UIAutomationLib\UIAutomationLib\bin\Debug\UIAutomationLib.dll
+D:\Document\Visual Studio 2008\Projects\UIAutomationLib\UIAutomationLib\bin\Debug\UIAutomationLib.pdb
+D:\Document\Visual Studio 2008\Projects\UIAutomationLib\UIAutomationLib\obj\Debug\UIAutomationLib.dll
+D:\Document\Visual Studio 2008\Projects\UIAutomationLib\UIAutomationLib\obj\Debug\UIAutomationLib.pdb
+D:\Work\DotNet\UIAutomationLib\UIAutomationLib\bin\Debug\UIAutomationLib.dll
+D:\Work\DotNet\UIAutomationLib\UIAutomationLib\bin\Debug\UIAutomationLib.pdb
+D:\Work\DotNet\UIAutomationLib\UIAutomationLib\obj\Debug\ResolveAssemblyReference.cache
+D:\Work\DotNet\UIAutomationLib\UIAutomationLib\obj\Debug\UIAutomationLib.dll
+D:\Work\DotNet\UIAutomationLib\UIAutomationLib\obj\Debug\UIAutomationLib.pdb
+D:\DotNet\UIAutomationLib\UIAutomationLib\obj\Debug\ResolveAssemblyReference.cache
+D:\DotNet\UIAutomationLib\UIAutomationLib\obj\Debug\UIAutomationLib.dll
+D:\DotNet\UIAutomationLib\UIAutomationLib\obj\Debug\UIAutomationLib.pdb
+D:\DotNet\UIAutomationLib\UIAutomationLib\bin\Debug\UIAutomationLib.dll
+D:\DotNet\UIAutomationLib\UIAutomationLib\bin\Debug\UIAutomationLib.pdb

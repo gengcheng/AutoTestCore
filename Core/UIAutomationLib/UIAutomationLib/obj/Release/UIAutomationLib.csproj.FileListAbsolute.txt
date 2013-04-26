@@ -1,0 +1,40 @@
+D:\Work\DotNet\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.dll
+D:\Work\DotNet\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.pdb
+D:\Work\DotNet\UIAutomationLib\UIAutomationLib\obj\Release\ResolveAssemblyReference.cache
+D:\Work\DotNet\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.dll
+D:\Work\DotNet\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.pdb
+D:\DotNet\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.dll
+D:\DotNet\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.pdb
+D:\DotNet\UIAutomationLib\UIAutomationLib\obj\Release\ResolveAssemblyReference.cache
+D:\DotNet\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.dll
+D:\DotNet\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.pdb
+D:\Work\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.dll
+D:\Work\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.pdb
+D:\Work\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\ResolveAssemblyReference.cache
+D:\Work\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.dll
+D:\Work\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.pdb
+D:\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.dll
+D:\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.pdb
+D:\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\ResolveAssemblyReference.cache
+D:\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.dll
+D:\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.pdb
+D:\Work\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\ThoughtWorks.Selenium.Core.dll
+D:\Work\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\ThoughtWorks.Selenium.Core.pdb
+C:\Work\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.dll
+C:\Work\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.pdb
+C:\Work\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\ResolveAssemblyReference.cache
+C:\Work\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.dll
+C:\Work\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.pdb
+D:\Workspace\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.dll
+D:\Workspace\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.pdb
+D:\Workspace\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\ResolveAssemblyReference.cache
+D:\Workspace\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.dll
+D:\Workspace\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.pdb
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.dll
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\UIAutomationLib.pdb
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\ResolveAssemblyReference.cache
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.dll
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.pdb
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\Interop.TDAPIOLELib.dll
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\obj\Release\UIAutomationLib.csproj.ResolveComReference.cache
+D:\Ivan Geng\Automation\UIAutomation_Ivan\Core\UIAutomationLib\UIAutomationLib\bin\Release\Interop.TDAPIOLELib.dll
